@@ -1,5 +1,5 @@
 %define	name	mantis
-%define	version	1.0.6
+%define	version	1.0.7
 %define	release	%mkrel 1
 %define order	71
 
@@ -46,8 +46,7 @@ rm -rf  $RPM_BUILD_ROOT
 install -d -m 755 $RPM_BUILD_ROOT%{_var}/www/%{name}
 install -d -m 755 $RPM_BUILD_ROOT%_defaultdocdir/%{name}-%{version}
 mv doc/*  $RPM_BUILD_ROOT%_defaultdocdir/%{name}-%{version}
-mv packages/* $RPM_BUILD_ROOT%_defaultdocdir/%{name}-%{version}
-rm -rf doc packages
+rm -rf doc 
 cp -aRf * $RPM_BUILD_ROOT%{_var}/www/%{name}
 
 # apache configuration
