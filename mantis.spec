@@ -1,6 +1,6 @@
 %define	name	mantis
 %define	version	1.0.7
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 %define order	71
 
 Name:		%{name}
@@ -15,7 +15,7 @@ Source1:	%{name}-apache.conf.bz2
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
 Requires(pre):  apache-conf >= 2.0.54
-Requires(pre):  apache-mpm-prefork >= 2.0.54
+Requires(pre):  apache-mpm >= 2.0.54
 Requires:       apache-mod_php
 Requires:	MySQL
 BuildArch:	noarch
