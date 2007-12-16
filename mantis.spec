@@ -1,6 +1,6 @@
 %define	name	mantis
-%define	version	1.0.7
-%define	release	%mkrel 2
+%define	version	1.0.8
+%define	release	%mkrel 1
 %define order	71
 
 Name:		%{name}
@@ -42,6 +42,7 @@ Mantis to suit their needs.
 %install
 rm -rf  $RPM_BUILD_ROOT
 
+rm -rf packages
 # install files
 install -d -m 755 $RPM_BUILD_ROOT%{_var}/www/%{name}
 install -d -m 755 $RPM_BUILD_ROOT%_defaultdocdir/%{name}-%{version}
