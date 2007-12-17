@@ -20,7 +20,6 @@ Requires:       apache-mod_php
 Requires:	MySQL
 BuildArch:	noarch
 BuildRequires:	file
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 Mantis is a php/MySQL/web based bugtracking system.
