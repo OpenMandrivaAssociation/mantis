@@ -9,6 +9,7 @@ Release:	%{release}
 Summary:	Web-based bug tracker
 License:	GPL
 Group:		System/Servers
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.mantisbt.org
 Source0:	%{name}-%{version}.tar.gz
 Source1:	%{name}-apache.conf.bz2
