@@ -1,6 +1,6 @@
 %define	name	mantis
 %define	version	1.0.8
-%define	release	%mkrel 1
+%define	release	%mkrel 3
 %define order	71
 
 Name:		%{name}
