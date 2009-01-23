@@ -1,6 +1,7 @@
 %define	name	mantis
-%define	version	1.0.8
-%define	release	%mkrel 3
+%define oname   mantisbt
+%define	version	1.1.6
+%define	release	%mkrel 1
 %define order	71
 
 Name:		%{name}
@@ -11,7 +12,7 @@ License:	GPL
 Group:		System/Servers
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.mantisbt.org
-Source0:	%{name}-%{version}.tar.gz
+Source0:	%{oname}-%{version}.tar.gz
 Source1:	%{name}-apache.conf.bz2
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
@@ -24,18 +25,18 @@ BuildRequires:	file
 
 %description
 Mantis is a php/MySQL/web based bugtracking system.
-The goals for this project are to produce and maintain a 
-lightweight and simple bugtracking system. Additions of 
-complexity and/or features are modular and configurable 
+The goals for this project are to produce and maintain a
+lightweight and simple bugtracking system. Additions of
+complexity and/or features are modular and configurable
 so that users can be shielded from unwanted clutter.
 
 The product is designed to be easily modifiable,
- customizable, and upgradeable. Anyone with intermediate 
-PHP and MySQL experience should be able to customize 
-Mantis to suit their needs. 
+ customizable, and upgradeable. Anyone with intermediate
+PHP and MySQL experience should be able to customize
+Mantis to suit their needs.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{oname}-%{version}
 
 %build
 
@@ -47,7 +48,7 @@ rm -rf packages
 install -d -m 755 $RPM_BUILD_ROOT%{_var}/www/%{name}
 install -d -m 755 $RPM_BUILD_ROOT%_defaultdocdir/%{name}-%{version}
 mv doc/*  $RPM_BUILD_ROOT%_defaultdocdir/%{name}-%{version}
-rm -rf doc 
+rm -rf doc
 cp -aRf * $RPM_BUILD_ROOT%{_var}/www/%{name}
 
 # apache configuration
@@ -84,5 +85,4 @@ fi
 %{_var}/www/%{name}/images
 %{_var}/www/%{name}/javascript
 %{_var}/www/%{name}/lang
-
-
+%{_var}/www/%{name}/api/*
