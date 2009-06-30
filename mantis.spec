@@ -31,7 +31,7 @@ complexity and/or features are modular and configurable
 so that users can be shielded from unwanted clutter.
 
 The product is designed to be easily modifiable,
- customizable, and upgradeable. Anyone with intermediate
+customizable, and upgradeable. Anyone with intermediate
 PHP and MySQL experience should be able to customize
 Mantis to suit their needs.
 
