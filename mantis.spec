@@ -11,7 +11,6 @@ License:	GPL
 Group:		System/Servers
 URL:		http://www.mantisbt.org
 Source0:	%{oname}-%{version}.tar.gz
-Source1:	%{name}-apache.conf.bz2
 Requires:   apache-mod_php
 Requires:	php-mysql
 %if %mdkversion < 201010
@@ -51,7 +50,40 @@ cp -aRf * %{buildroot}%{_var}/www/%{name}
 
 # apache configuration
 install -d -m 755 %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d
-bzcat %{SOURCE1} > %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d/%{name}.conf
+cat > %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d/%{name}.conf <<EOF
+Alias /mantis "/var/www/mantis"
+
+<Directory /var/www/mantis>
+
+    Order allow,deny
+    Allow from all
+
+	php_admin_value memory_limit 32M
+	php_admin_value max_execution_time 60
+	php_admin_value register_globals Off
+	php_admin_value magic_quotes_gpc Off
+	php_admin_value magic_quotes_runtime Off
+	# settings for the file upload, you might increase them further
+	php_admin_value upload_max_filesize 16M
+	# session handling: now the check for expired sessions is done on every 10th session creation
+	php_admin_value session.use_trans_sid Off
+	php_admin_value session.gc_probability 1
+	php_admin_value session.gc_divisor 10
+	# multibyte extension: needed for utf-8
+	php_admin_value mbstring.func_overload 7
+
+  <Files ~ "\.inc\.php$">
+     Order allow,deny
+     Deny from all
+   </Files>
+
+  <Files ~ ".tpl$">
+     Order allow,deny
+     Deny from all
+  </Files>
+
+</Directory>
+EOF
 
 find %{buildroot}%{_var}/www/%{name} -name '*.php' -exec perl -pi -e 's|/usr/local/bin/php|/usr/bin/php|g' {} \;
 
