@@ -1,24 +1,22 @@
-%define	name	mantis
 %define oname   mantisbt
-%define	version	1.1.8
-%define	release	%mkrel 2
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+
+Name:		mantis
+Version:	1.2.1
+Release:	%mkrel 1
 Summary:	Web-based bug tracker
-License:	GPL
+License:	GPLv2
 Group:		System/Servers
 URL:		http://www.mantisbt.org
 Source0:	%{oname}-%{version}.tar.gz
-Requires:   apache-mod_php
+Requires:	apache-mod_php
 Requires:	php-mysql
 %if %mdkversion < 201010
-Requires(post):   rpm-helper
+Requires(post):	rpm-helper
 Requires(postun):   rpm-helper
 %endif
 BuildArch:	noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Mantis is a php/MySQL/web based bugtracking system.
