@@ -3,7 +3,7 @@
 
 Name:		mantis
 Version:	1.2.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	Web-based bug tracker
 License:	GPLv2
 Group:		System/Servers
