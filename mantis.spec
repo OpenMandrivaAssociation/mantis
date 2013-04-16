@@ -3,7 +3,7 @@
 
 Name:		mantis
 Version:	1.2.1
-Release:	%mkrel 2
+Release:	3
 Summary:	Web-based bug tracker
 License:	GPLv2
 Group:		System/Servers
@@ -88,15 +88,7 @@ find %{buildroot}%{_var}/www/%{name} -name '*.php' -exec perl -pi -e 's|/usr/loc
 %clean
 rm -rf %{buildroot}
 
-%post
-%if %mdkversion < 201010
-%_post_webapp
-%endif
 
-%postun
-%if %mdkversion < 201010
-%_postun_webapp
-%endif
 
 %files
 %defattr(-,root,root)
