@@ -3,7 +3,7 @@
 
 Name:		mantis
 Version:	1.2.1
-Release:	4
+Release:	5
 Summary:	Web-based bug tracker
 License:	GPLv2
 Group:		System/Servers
@@ -12,12 +12,7 @@ Source0:	%{oname}-%{version}.tar.gz
 Requires:	apache-mod_php
 Requires:	php-mysql
 Requires:	apache-mod_socache_shmcb
-%if %mdkversion < 201010
-Requires(post):	rpm-helper
-Requires(postun):   rpm-helper
-%endif
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Mantis is a php/MySQL/web based bugtracking system.
@@ -37,8 +32,6 @@ Mantis to suit their needs.
 %build
 
 %install
-rm -rf  %{buildroot}
-
 rm -rf packages
 # install files
 install -d -m 755 %{buildroot}%{_var}/www/%{name}
@@ -84,12 +77,9 @@ EOF
 find %{buildroot}%{_var}/www/%{name} -name '*.php' -exec perl -pi -e 's|/usr/local/bin/php|/usr/bin/php|g' {} \;
 
 %clean
-rm -rf %{buildroot}
-
 
 
 %files
-%defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/httpd/conf/webapps.d/%{name}.conf
 %_defaultdocdir/%{name}-%{version}
 %{_var}/www/%{name}
