@@ -11,6 +11,7 @@ URL:		http://www.mantisbt.org
 Source0:	%{oname}-%{version}.tar.gz
 Requires:	apache-mod_php
 Requires:	php-mysql
+Requires:	apache-mod_socache_shmcb
 %if %mdkversion < 201010
 Requires(post):	rpm-helper
 Requires(postun):   rpm-helper
@@ -53,9 +54,8 @@ Alias /mantis "/var/www/mantis"
 
 <Directory /var/www/mantis>
 
-    Order allow,deny
-    Allow from all
-
+    Require all granted
+    
 	php_admin_value memory_limit 32M
 	php_admin_value max_execution_time 60
 	php_admin_value register_globals Off
@@ -71,13 +71,11 @@ Alias /mantis "/var/www/mantis"
 	php_admin_value mbstring.func_overload 7
 
   <Files ~ "\.inc\.php$">
-     Order allow,deny
-     Deny from all
+     Require all denied
    </Files>
 
   <Files ~ ".tpl$">
-     Order allow,deny
-     Deny from all
+     Require all denied
   </Files>
 
 </Directory>
