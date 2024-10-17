@@ -7,7 +7,7 @@ Release:	6
 Summary:	Web-based bug tracker
 License:	GPLv2
 Group:		System/Servers
-URL:		http://www.mantisbt.org
+URL:		https://www.mantisbt.org
 Source0:	%{oname}-%{version}.tar.gz
 Requires:	apache-mod_php
 Requires:	php-mysql
